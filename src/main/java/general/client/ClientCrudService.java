@@ -23,6 +23,7 @@ public class ClientCrudService implements IClientDaoService{
 
         } catch (Exception e) {
             session.getTransaction().rollback();
+            System.err.println("An error occurred while creating a new client: " + e.getMessage());
             e.printStackTrace();
         } finally {
             session.close();
@@ -50,6 +51,7 @@ public class ClientCrudService implements IClientDaoService{
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            System.err.println("An error occurred while setting name for client with id " + id + ": " + e.getMessage());
             e.printStackTrace();
         } finally {
             session.close();
@@ -67,6 +69,7 @@ public class ClientCrudService implements IClientDaoService{
         session.getTransaction().commit();
     } catch (Exception e) {
         session.getTransaction().rollback();
+        System.err.println("An error occurred while deleting client with id " + id + ": " + e.getMessage());
         e.printStackTrace();
     } finally {
         session.close();

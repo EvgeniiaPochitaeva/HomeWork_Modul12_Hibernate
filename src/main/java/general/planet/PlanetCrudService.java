@@ -27,6 +27,7 @@ public class PlanetCrudService implements IPlanetDaoService {
 
         } catch (Exception e) {
             session.getTransaction().rollback();
+            System.err.println("An error occurred while creating a new planet: " + e.getMessage());
             e.printStackTrace();
         } finally {
             session.close();
@@ -54,6 +55,7 @@ public class PlanetCrudService implements IPlanetDaoService {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            System.err.println("An error occurred while setting name for planet with id " + id + ": " + e.getMessage());
             e.printStackTrace();
         } finally {
             session.close();
@@ -70,6 +72,7 @@ public class PlanetCrudService implements IPlanetDaoService {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            System.err.println("An error occurred while deleting planet with id " + id + ": " + e.getMessage());
             e.printStackTrace();
         } finally {
             session.close();
